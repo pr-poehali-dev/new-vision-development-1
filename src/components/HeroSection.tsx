@@ -92,7 +92,7 @@ export function HeroSection() {
               className="border-2 border-primary/20 text-foreground hover:bg-primary/5 hover:border-primary font-semibold px-8 py-6 text-lg backdrop-blur-sm bg-transparent"
               asChild
             >
-              <a href="#portfolio">Каталог деталей</a>
+              <a href="/catalog">Каталог деталей</a>
             </Button>
           </div>
 

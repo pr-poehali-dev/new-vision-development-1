@@ -15,27 +15,27 @@ export function Footer() {
             <h4 className="font-semibold mb-4">Навигация</h4>
             <ul className="space-y-2">
               <li>
-                <a href="#about" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <a href="/about" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   О компании
                 </a>
               </li>
               <li>
-                <a href="#services" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <a href="/#services" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   Ассортимент
                 </a>
               </li>
               <li>
-                <a href="#portfolio" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <a href="/catalog" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   Каталог
                 </a>
               </li>
               <li>
-                <a href="#pricing" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <a href="/#pricing" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   Условия работы
                 </a>
               </li>
               <li>
-                <a href="#contact" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <a href="/#contact" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   Контакты
                 </a>
               </li>

@@ -2,9 +2,12 @@ import { ThemeToggle } from "@/components/ThemeToggle"
 import { Logo } from "@/components/Logo"
 import { MobileMenu } from "@/components/MobileMenu"
 import { useState, useEffect } from "react"
+import { useNavigate, useLocation } from "react-router-dom"
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
+  const navigate = useNavigate()
+  const location = useLocation()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -13,6 +16,15 @@ export function Navbar() {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+  const goToSection = (hash: string) => {
+    if (location.pathname !== "/") {
+      navigate("/" + hash)
+    } else {
+      const el = document.querySelector(hash)
+      if (el) el.scrollIntoView({ behavior: "smooth" })
+    }
+  }
 
   return (
     <nav
@@ -27,21 +39,21 @@ export function Navbar() {
           </a>
 
           <div className="hidden md:flex items-center gap-8">
-            <a href="#about" className="text-sm font-medium hover:text-primary transition-colors">
-              О нас
+            <a href="/about" className="text-sm font-medium hover:text-primary transition-colors">
+              О компании
             </a>
-            <a href="#services" className="text-sm font-medium hover:text-primary transition-colors">
-              Услуги
-            </a>
-            <a href="#portfolio" className="text-sm font-medium hover:text-primary transition-colors">
+            <button onClick={() => goToSection("#services")} className="text-sm font-medium hover:text-primary transition-colors bg-transparent border-0 cursor-pointer">
+              Ассортимент
+            </button>
+            <a href="/catalog" className="text-sm font-medium hover:text-primary transition-colors">
               Каталог
             </a>
-            <a href="#pricing" className="text-sm font-medium hover:text-primary transition-colors">
+            <button onClick={() => goToSection("#pricing")} className="text-sm font-medium hover:text-primary transition-colors bg-transparent border-0 cursor-pointer">
               Условия
-            </a>
-            <a href="#contact" className="text-sm font-medium hover:text-primary transition-colors">
+            </button>
+            <button onClick={() => goToSection("#contact")} className="text-sm font-medium hover:text-primary transition-colors bg-transparent border-0 cursor-pointer">
               Контакты
-            </a>
+            </button>
           </div>
 
           <div className="flex items-center gap-2">
