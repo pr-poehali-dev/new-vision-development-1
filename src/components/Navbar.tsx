@@ -1,6 +1,7 @@
 import { ThemeToggle } from "@/components/ThemeToggle"
 import { Logo } from "@/components/Logo"
 import { MobileMenu } from "@/components/MobileMenu"
+import { CartDrawer } from "@/components/CartDrawer"
 import { useState, useEffect } from "react"
 import { useNavigate, useLocation } from "react-router-dom"
 
@@ -57,6 +58,7 @@ export function Navbar() {
           </div>
 
           <div className="flex items-center gap-2">
+            <CartDrawer />
             <ThemeToggle />
             <MobileMenu />
           </div>
