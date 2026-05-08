@@ -17,14 +17,10 @@ export function ContactSection() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     console.log("[v0] Form submitted:", formData)
-    // Handle form submission
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }))
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
   return (
@@ -38,10 +34,10 @@ export function ContactSection() {
             Контакты
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-balance">
-            Давайте <span className="text-primary">создавать вместе</span>
+            Запросите <span className="text-primary">цену или наличие</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-pretty leading-relaxed">
-            Готовы воплотить ваши цифровые амбиции? Свяжитесь с нами без обязательств и узнайте, чем мы можем помочь.
+            Укажите марку техники, артикул детали или опишите, что нужно — ответим быстро и предложим лучшую цену.
           </p>
         </div>
 
@@ -49,15 +45,13 @@ export function ContactSection() {
           <div className="lg:col-span-2">
             <Card className="border-none shadow-xl bg-background">
               <CardHeader>
-                <CardTitle className="text-2xl">Напишите нам</CardTitle>
+                <CardTitle className="text-2xl">Написать нам</CardTitle>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <label htmlFor="name" className="text-sm font-medium">
-                        Имя *
-                      </label>
+                      <label htmlFor="name" className="text-sm font-medium">Имя *</label>
                       <Input
                         id="name"
                         name="name"
@@ -69,45 +63,39 @@ export function ContactSection() {
                       />
                     </div>
                     <div className="space-y-2">
-                      <label htmlFor="email" className="text-sm font-medium">
-                        E-mail *
-                      </label>
+                      <label htmlFor="phone" className="text-sm font-medium">Телефон *</label>
                       <Input
-                        id="email"
-                        name="email"
-                        type="email"
-                        value={formData.email}
+                        id="phone"
+                        name="phone"
+                        type="tel"
+                        value={formData.phone}
                         onChange={handleChange}
-                        placeholder="your@email.ru"
+                        placeholder="+7 900 123-45-67"
                         required
                         className="transition-all focus:scale-[1.02]"
                       />
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <label htmlFor="phone" className="text-sm font-medium">
-                      Телефон
-                    </label>
+                    <label htmlFor="email" className="text-sm font-medium">E-mail</label>
                     <Input
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      value={formData.phone}
+                      id="email"
+                      name="email"
+                      type="email"
+                      value={formData.email}
                       onChange={handleChange}
-                      placeholder="+7 900 123-45-67"
+                      placeholder="your@email.ru"
                       className="transition-all focus:scale-[1.02]"
                     />
                   </div>
                   <div className="space-y-2">
-                    <label htmlFor="message" className="text-sm font-medium">
-                      Сообщение *
-                    </label>
+                    <label htmlFor="message" className="text-sm font-medium">Что нужно? *</label>
                     <Textarea
                       id="message"
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
-                      placeholder="Расскажите о вашем проекте..."
+                      placeholder="Укажите артикул, марку техники или опишите деталь..."
                       rows={6}
                       required
                       className="transition-all focus:scale-[1.02]"
@@ -115,7 +103,7 @@ export function ContactSection() {
                   </div>
                   <Button type="submit" size="lg" className="w-full sm:w-auto group">
                     <Send className="mr-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                    Отправить
+                    Отправить запрос
                   </Button>
                 </form>
               </CardContent>
@@ -127,11 +115,12 @@ export function ContactSection() {
               <CardContent className="p-6">
                 <div className="flex items-start gap-4">
                   <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 group-hover:scale-110">
-                    <Mail className="h-5 w-5" />
+                    <Phone className="h-5 w-5" />
                   </div>
                   <div>
-                    <h3 className="font-semibold mb-1">E-mail</h3>
-                    <p className="text-sm text-muted-foreground">hello@example.com</p>
+                    <h3 className="font-semibold mb-1">Телефон</h3>
+                    <p className="text-sm text-muted-foreground">+7 (800) 000-00-00</p>
+                    <p className="text-xs text-muted-foreground mt-1">Пн–Пт: 8:00–18:00 МСК</p>
                   </div>
                 </div>
               </CardContent>
@@ -141,11 +130,12 @@ export function ContactSection() {
               <CardContent className="p-6">
                 <div className="flex items-start gap-4">
                   <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 group-hover:scale-110">
-                    <Phone className="h-5 w-5" />
+                    <Mail className="h-5 w-5" />
                   </div>
                   <div>
-                    <h3 className="font-semibold mb-1">Телефон</h3>
-                    <p className="text-sm text-muted-foreground">+7 900 123-45-67</p>
+                    <h3 className="font-semibold mb-1">E-mail</h3>
+                    <p className="text-sm text-muted-foreground">info@agroh.ru</p>
+                    <p className="text-xs text-muted-foreground mt-1">Ответим в течение 2 часов</p>
                   </div>
                 </div>
               </CardContent>
@@ -158,12 +148,11 @@ export function ContactSection() {
                     <MapPin className="h-5 w-5" />
                   </div>
                   <div>
-                    <h3 className="font-semibold mb-1">Время работы</h3>
+                    <h3 className="font-semibold mb-1">Отгрузка по России</h3>
                     <p className="text-sm text-muted-foreground">
-                      Пн - Пт: 9:00 - 18:00
-                      <br />
-                      Выходные: по договоренности
+                      СДЭК, ПЭК, Деловые линии,<br />Почта России
                     </p>
+                    <p className="text-xs text-muted-foreground mt-1">Самовывоз — по согласованию</p>
                   </div>
                 </div>
               </CardContent>

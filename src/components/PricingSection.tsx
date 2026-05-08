@@ -1,44 +1,47 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Check } from "lucide-react"
-import { QuoteFormDialog } from "@/components/QuoteFormDialog"
+import { Button } from "@/components/ui/button"
 
 const pricingTiers = [
   {
-    name: "Базовый",
-    price: "99 900",
+    name: "Розница",
+    price: "от 1 шт.",
     features: [
-      "До 5 страниц",
-      "Адаптивный дизайн",
-      "Базовая SEO-оптимизация",
-      "Форма обратной связи",
-      "1 месяц поддержки",
+      "Любые позиции из каталога",
+      "Отгрузка 1-2 рабочих дня",
+      "Доставка ТК или Почтой РФ",
+      "Консультация по подбору",
+      "Оплата картой или переводом",
     ],
     highlighted: false,
+    cta: "Оформить заказ",
   },
   {
-    name: "Про",
-    price: "249 900",
+    name: "Оптовый",
+    price: "от 50 000 ₽",
     features: [
-      "До 15 страниц",
-      "Премиум-дизайн",
-      "Расширенная SEO-оптимизация",
-      "Интеграция CMS",
-      "Функционал e-commerce",
-      "3 месяца поддержки",
+      "Скидка от 10% на весь ассортимент",
+      "Приоритетное резервирование",
+      "Персональный менеджер",
+      "Отсрочка платежа (по договору)",
+      "Счёт-фактура, накладные",
+      "Доставка до склада клиента",
     ],
     highlighted: true,
+    cta: "Стать оптовым клиентом",
   },
   {
-    name: "Индивидуальный",
-    price: "По запросу",
+    name: "Для дилеров",
+    price: "По договору",
     features: [
-      "Неограниченно страниц",
-      "Кастомный функционал",
-      "API-интеграции",
-      "Персональный менеджер",
-      "6 месяцев поддержки",
+      "Максимальные скидки",
+      "Эксклюзивные условия",
+      "Совместные акции и прайсы",
+      "Техническая поддержка",
+      "Возврат нереализованного товара",
     ],
     highlighted: false,
+    cta: "Обсудить условия",
   },
 ]
 
@@ -57,13 +60,13 @@ export function PricingSection() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
             </span>
-            Прозрачные цены
+            Условия сотрудничества
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-balance">
-            Выберите <span className="text-primary">идеальный тариф</span> для вашего проекта
+            Выберите <span className="text-primary">формат работы</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            От стартапов до крупного бизнеса — у нас есть подходящее решение
+            Работаем с фермерами, агрохолдингами и дилерами — найдём удобный формат для каждого
           </p>
         </div>
 
@@ -85,17 +88,7 @@ export function PricingSection() {
               <CardHeader className="text-center pb-8">
                 <CardTitle className="text-2xl mb-2">{tier.name}</CardTitle>
                 <div className="mt-4">
-                  <span className="text-4xl font-bold">
-                    {tier.price === "По запросу" ? (
-                      <span className="text-3xl">{tier.price}</span>
-                    ) : (
-                      <>
-                        <span className="text-lg font-normal text-muted-foreground">от </span>
-                        {tier.price}
-                        <span className="text-lg font-normal text-muted-foreground"> ₽</span>
-                      </>
-                    )}
-                  </span>
+                  <span className="text-3xl font-bold">{tier.price}</span>
                 </div>
               </CardHeader>
               <CardContent>
@@ -107,13 +100,13 @@ export function PricingSection() {
                     </li>
                   ))}
                 </ul>
-                <QuoteFormDialog
-                  packageName={tier.name}
-                  variant={tier.highlighted ? "default" : "outline"}
+                <Button
                   className={`w-full ${tier.highlighted ? "shadow-lg shadow-primary/20" : ""}`}
+                  variant={tier.highlighted ? "default" : "outline"}
+                  onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
                 >
-                  {tier.price === "По запросу" ? "Связаться с нами" : "Выбрать тариф"}
-                </QuoteFormDialog>
+                  {tier.cta}
+                </Button>
               </CardContent>
             </Card>
           ))}
@@ -121,8 +114,8 @@ export function PricingSection() {
 
         <div className="mt-12 text-center">
           <p className="text-sm text-muted-foreground">
-            Все тарифы включают <span className="text-primary font-semibold">бесплатную настройку хостинга</span> и{" "}
-            <span className="text-primary font-semibold">SSL-сертификат</span>
+            Работаем с <span className="text-primary font-semibold">НДС и без НДС</span> — предоставляем все необходимые{" "}
+            <span className="text-primary font-semibold">бухгалтерские документы</span>
           </p>
         </div>
       </div>
